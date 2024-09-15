@@ -113,7 +113,6 @@ class Test_Element extends Widget_Base
 
 	protected function register_controls_section()
 	{
-		//Hero content
 		$this->start_controls_section(
 			'section_content',
 			[
@@ -122,22 +121,14 @@ class Test_Element extends Widget_Base
 		);
 
 		$this->add_control(
-			'hero_sub_title',
-			[
-				'label' => __('Sub Title', 'myblogger-core'),
-				'type' => Controls_Manager::TEXT,
-			]
-		);
-
-		$this->add_control(
-			'hero_title',
+			'title',
 			[
 				'label' => __('Title', 'myblogger-core'),
 				'type' => Controls_Manager::TEXT,
 			]
 		);
 		$this->add_control(
-			'hero_description',
+			'item_description',
 			[
 				'label' => esc_html__('Description', 'textdomain'),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
@@ -161,7 +152,6 @@ class Test_Element extends Widget_Base
 		$this->end_controls_section();
 
 
-		//Hero Button
 		$this->start_controls_section(
 			'myblogger_button_content',
 			[
@@ -181,9 +171,9 @@ class Test_Element extends Widget_Base
 		$this->add_control(
 			'hero_button_link',
 			[
-				'label' => esc_html__('Link', 'textdomain'),
+				'label' => esc_html__( 'Link', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'options' => ['url', 'is_external', 'nofollow'],
+				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
 					'url' => '',
 					'is_external' => true,
@@ -193,68 +183,6 @@ class Test_Element extends Widget_Base
 				'label_block' => true,
 			]
 		);
-
-		$this->end_controls_section();
-
-				//Hero Social 
-		$this->start_controls_section(
-			'hero_social',
-			[
-				'label' => __('Social Media', 'myblogger-core'),
-			]
-		);
-
-
-		$repeater = new \Elementor\Repeater();
-
-		$repeater->add_control(
-			'hero_social_url',
-			[
-				'label' => __('Url', 'myblogger-core'),
-				'type' => Controls_Manager::TEXT,
-			]
-		);
-
-		$repeater->add_control(
-			'hero_social_icon',
-			[
-				'label' => esc_html__( 'Icon', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-circle',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-
-		$this->add_control(
-			'list',
-			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
-					],
-					[
-						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
-					],
-				]
-			]
-		); 
 
 		$this->end_controls_section();
 
@@ -303,80 +231,57 @@ class Test_Element extends Widget_Base
 	protected function render()
 	{
 		$settings = $this->get_settings_for_display();
-		if (!empty($settings['hero_button_link']['url'])) {
-			$this->add_link_attributes('hero_button_arg', $settings['hero_button_link']);
-			$this->add_render_attribute('hero_button_arg',[
-				'id' => 'custom-widget-id',
-				'class' => 'tp-btn-5 tp-link-btn-3',
-			]
-		);
+		if ( ! empty( $settings['hero_button_link']['url'] ) ) {
+			$this->add_link_attributes( 'hero_button_arg', $settings['hero_button_link'] );
 		}
 
+		echo '<div class="title">';
+		echo $settings['title'];
+		echo '</div>';
+
 		?>
+		<p> <?php
 
+		echo esc_html($settings['item_description']); ?>
+		</p>
 
-		<!-- slider area start -->
-		<section class="slider__area pt-40 p-relative fix">
-			<div class="slider__item-9">
-				<div class="container">
-					<div class="row align-items-end">
-						<div class="col-xl-7 col-lg-6 col-md-7">
-							<div class="slider__content-9">
-								<span class="slider__title-pre-9"><?php echo esc_html($settings['hero_sub_title']); ?></span>
-								<h3 class="slider__title-9"><?php echo esc_html($settings['hero_title']); ?></h3>
-								<p><?php echo esc_html($settings['hero_description']); ?></p>
+		<img src="<?php echo esc_url($settings['hero_image']['url']) ?>	" alt="">
 
-								<div class="slider__btn-9 mb-85">
-									<a <?php echo $this->get_render_attribute_string( 'hero_button_arg' ); ?> ?>
-										<?php echo esc_html($settings['hero_button_title']); ?>
-										<span>
-											<i class="fa-regular fa-arrow-right"></i>
-										</span>
-									</a>
-								</div>
-
-								<div class="slider__social-9 d-flex flex-wrap align-items-center">
-									<span>Check out my:</span>
-
-
-									<ul>
-
-									<?php foreach ($settings['list']  as $item) : ?>
-
-										<li>
-											<a href="<?php echo esc_url($item['hero_social_url']); ?>">
-											<?php \Elementor\Icons_Manager::render_icon( $item['hero_social_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-											</a>
-										</li>
-
-									<?php endforeach ?>	
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-5 col-lg-6 col-md-5 order-first order-md-last">
-							<div class="slider__thumb-9 p-relative scene">
-								<div class="slider__shape">
-									<div class="slider__shape-20">
-										<img class="layer" data-depth=".2" src="<?php echo get_template_directory_uri(); ?> /assets/img/slider/9/slider-shape-1.png" alt="">
-									</div>
-									<div class="slider__shape-21">
-										<img class="layer" data-depth=".3" src="<?php echo get_template_directory_uri(); ?> /assets/img/slider/9/slider-shape-2.png" alt="">
-									</div>
-								</div>
-								<img class="slider__thumb-9-main" src="<?php echo esc_url($settings['hero_image']['url']) ?> " alt="">
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- slider area end -->
-
-
+		<div class="slider__btn-9 mb-85">
+			<a <?php $this->print_render_attribute_string( 'hero_button_arg' ); ?> class="tp-btn-5 tp-link-btn-3">
+				<?php echo esc_html($settings['hero_button_title']) ?>
+				<span>
+					<i class="fa-regular fa-arrow-right"></i>
+				</span>
+			</a>
+		</div>
 		<?php
+	}
 
+	/**
+	 * Render the widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @access protected
+	 */
+	protected function content_template()
+	{
+		?>
+		<div class="title">
+			{{{ settings.title }}}
+		</div>
+		<p>{{{ settings.item_description }}}</p>
+		<img src="{{{ settings.hero_image.url }}}" alt="">
+		<a href="contact.html" class="tp-btn-5 tp-link-btn-3">
+			{{{ settings.hero_button_title }}}
+			<span>
+				<i class="fa-regular fa-arrow-right"></i>
+			</span>
+		</a>
+		<?php
 	}
 }
 $widgets_manager->register(new Test_Element());

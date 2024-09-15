@@ -4,7 +4,7 @@
  * Description: Elementor sample plugin.
  * Plugin URI:  https://elementor.com/
  * Version:     1.2.1
- * Author:      Author Name
+ * Author:      Shohan
  * Author URI:  https://elementor.com/
  * Text Domain: elementor-hello-world
  * Elementor tested up to: 3.5.0
