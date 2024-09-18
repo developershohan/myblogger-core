@@ -119,6 +119,7 @@ class Myblogger_Plugin {
 		// Its is now safe to include Widgets files
 		require_once( __DIR__ . '/widgets/hello-world.php' );
 		require_once( __DIR__ . '/widgets/test-element.php' );
+		require_once( __DIR__ . '/widgets/process.php' );
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
 
 		// Register Widgets
