@@ -122,7 +122,7 @@ class Test_Element extends Widget_Base
 		);
 
 		$this->add_control(
-			'hero_sub_title',
+			'iconbox_sub_title',
 			[
 				'label' => __('Sub Title', 'myblogger-core'),
 				'type' => Controls_Manager::TEXT,
@@ -130,22 +130,13 @@ class Test_Element extends Widget_Base
 		);
 
 		$this->add_control(
-			'hero_title',
+			'iconbox_title',
 			[
 				'label' => __('Title', 'myblogger-core'),
 				'type' => Controls_Manager::TEXT,
 			]
 		);
-		$this->add_control(
-			'hero_description',
-			[
-				'label' => esc_html__('Description', 'textdomain'),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'rows' => 5,
-				'default' => esc_html__('Default description', 'textdomain'),
-				'placeholder' => esc_html__('Type your description here', 'textdomain'),
-			]
-		);
+
 
 		$this->add_control(
 			'hero_image',

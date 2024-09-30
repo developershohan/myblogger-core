@@ -12,7 +12,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
+include_once('include/core-function.php');
 /**
  * Main My Blogger core Class
  *
