@@ -120,6 +120,8 @@ class Myblogger_Plugin {
 		require_once( __DIR__ . '/widgets/hello-world.php' );
 		require_once( __DIR__ . '/widgets/test-element.php' );
 		require_once( __DIR__ . '/widgets/process.php' );
+		require_once( __DIR__ . '/widgets/portfolio-post.php' );
+		require_once( __DIR__ . '/widgets/blog-post.php' );
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
 
 		// Register Widgets

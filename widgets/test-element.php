@@ -316,7 +316,7 @@ class Test_Element extends Widget_Base
 
 
 		<!-- slider area start -->
-		<section class="slider__area pt-40 p-relative fix">
+		<section class="slider__area p-relative fix">
 			<div class="slider__item-9">
 				<div class="container">
 					<div class="row align-items-end">

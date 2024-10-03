@@ -14,7 +14,7 @@ if (!defined('ABSPATH'))
  *
  * @since 1.0.0
  */
-class MyBlogger_process extends Widget_Base
+class MyBlogger_slider extends Widget_Base
 {
 
 	/**
@@ -42,7 +42,7 @@ class MyBlogger_process extends Widget_Base
 	 */
 	public function get_title()
 	{
-		return __('Process', 'myblogger-core');
+		return __('Slider', 'myblogger-core');
 	}
 
 	/**
@@ -304,4 +304,4 @@ class MyBlogger_process extends Widget_Base
 
 	}
 }
-$widgets_manager->register(new MyBlogger_process());
+$widgets_manager->register(new MyBlogger_slider());

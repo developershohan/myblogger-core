@@ -13,6 +13,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+include_once('include/core-function.php');
+include_once('include/post-type-portfolio.php');
+
 /**
  * Main My Blogger core Class
  *
