@@ -26,7 +26,7 @@
             $posts_list[$post->ID] = $post->post_title;
         }
         return $posts_list;
-<<<<<<< HEAD
+
     }
 
     function myblogger_get_cat_data($categories = [],$delimeter = ' ', $term = 'slug' ) {
@@ -42,6 +42,4 @@
 
         }
         return implode($delimeter, $slugs);
-=======
->>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
     }

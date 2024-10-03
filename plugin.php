@@ -121,12 +121,12 @@ class Myblogger_Plugin {
 		require_once( __DIR__ . '/widgets/blog-post.php' );
 		require_once( __DIR__ . '/widgets/test-element.php' );
 		require_once( __DIR__ . '/widgets/process.php' );
-<<<<<<< HEAD
+
 		require_once( __DIR__ . '/widgets/portfolio-post.php' );
 		require_once( __DIR__ . '/widgets/blog-post.php' );
-=======
+
 		require_once( __DIR__ . '/widgets/myblogger-icon-box.php' );
->>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
+
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
 
 		// Register Widgets
