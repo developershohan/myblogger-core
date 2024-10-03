@@ -12,10 +12,14 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+<<<<<<< HEAD
 
 include_once('include/core-function.php');
 include_once('include/post-type-portfolio.php');
 
+=======
+include_once('include/core-function.php');
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 /**
  * Main My Blogger core Class
  *

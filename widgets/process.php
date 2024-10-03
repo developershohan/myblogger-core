@@ -17,6 +17,7 @@ if (!defined('ABSPATH'))
 class MyBlogger_process extends Widget_Base
 {
 
+	
 	/**
 	 * Retrieve the widget name.
 	 *

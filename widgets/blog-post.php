@@ -14,7 +14,11 @@ if (!defined('ABSPATH'))
  *
  * @since 1.0.0
  */
+<<<<<<< HEAD
 class Myblogger_Blog_Post extends Widget_Base
+=======
+class Blog_Post extends Widget_Base
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 {
 
 	/**
@@ -116,21 +120,30 @@ class Myblogger_Blog_Post extends Widget_Base
 		$this->start_controls_section(
 			'blog_post_section',
 			[
+<<<<<<< HEAD
 				'label' => esc_html__( 'BLog Post', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+=======
+				'label' => __('BLog Post', 'myblogger-core'),
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 			]
 		);
 
 		$this->add_control(
 			'post_per_page',
 			[
+<<<<<<< HEAD
 				'label' => esc_html__( 'Post Per Page', 'textdomain' ),
+=======
+				'label' => esc_html__( 'Post Per Page', 'myblogger-core' ),
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'default' => 3,
 			]
 		);
 
 		$this->add_control(
+<<<<<<< HEAD
 			'post_cat_list',
 			[
 				'label' => esc_html__( 'Category Include', 'textdomain' ),
@@ -209,6 +222,18 @@ class Myblogger_Blog_Post extends Widget_Base
 
 
 		
+=======
+			'cat_list',
+			[
+				'label' => esc_html__( 'Blog Category', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => post_cat(),
+			]
+		);
+
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 		$this->end_controls_section();
 
 	}
@@ -253,6 +278,7 @@ class Myblogger_Blog_Post extends Widget_Base
 	 *
 	 * @access protected
 	 */
+<<<<<<< HEAD
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
@@ -303,10 +329,30 @@ class Myblogger_Blog_Post extends Widget_Base
 
 
 		$query = new \WP_Query( $args );
+=======
+	protected function render()
+	{
+		$settings = $this->get_settings_for_display();
+
+		$args = array(
+			'post_type' => 'post',
+			'posts_per_page' => !empty($settings['post_per_page']) ? $settings['post_per_page'] : -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field' => 'slug',
+					'terms' => $settings['cat_list'],
+				),
+			),
+		);
+
+		$query = new \WP_Query($args);
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
 
 
 		?>
 
+<<<<<<< HEAD
 
          <!-- blog area start -->
          <section class="blog__area  z-index-1">
@@ -349,3 +395,48 @@ class Myblogger_Blog_Post extends Widget_Base
 	}
 }
 $widgets_manager->register(new Myblogger_Blog_Post());
+=======
+		<!-- blog area start -->
+		<section class="blog__area grey-bg-12 p-relative z-index-1">
+			<div class="container">
+				<div class="row">
+				<?php if ( $query->have_posts() ) : while($query-> have_posts()  ) : $query->the_post(); 
+					$categories = get_the_category(get_the_ID());
+				?>
+				
+					<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+						<div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+							<div class="blog__thumb-9 w-img fix">
+								<a href="<?php the_permalink( ) ?>">
+									<?php the_post_thumbnail() ?>
+								</a>
+							</div>
+							<div class="blog__content-9">
+								<div class="blog__meta-9">
+									<span>
+										<a href="#"><?php echo get_the_date(); ?></a>
+									</span>
+									<span>
+										<a href="#"><?php echo esc_html($categories[0]->name); ?></a>
+									</span>
+								</div>
+								<h3 class="blog__title-9">
+									<a href="<?php the_permalink( ) ?>"><?php the_title() ?></a>
+								</h3>
+							</div>
+						</div>
+					</div>
+				<?php endwhile; endif; ?>
+				</div>
+			</div>
+		</section>
+		<!-- blog area end -->
+
+
+		<?php
+	}
+
+
+}
+$widgets_manager->register(new Blog_Post());
+>>>>>>> f046e8bceaa0b9f32c7c16497e9dde3afa7d93aa
